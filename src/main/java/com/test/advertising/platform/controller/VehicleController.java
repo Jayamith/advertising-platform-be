@@ -75,6 +75,13 @@ public class VehicleController {
 		return vehicleService.getVehicleById(id);
 
 	}
+	@PutMapping("/vehicles/{id}")
+	public ResponseEntity<Vehicle> updateVehicle(@PathVariable Integer id,
+			@RequestBody Vehicle vehicle) {
+
+		Vehicle updatedVehicle = vehicleService.updateVehicle(id,vehicle);
+		return new ResponseEntity<Vehicle>(updatedVehicle, HttpStatus.OK);
+	}
 
 	
 //	@Autowired

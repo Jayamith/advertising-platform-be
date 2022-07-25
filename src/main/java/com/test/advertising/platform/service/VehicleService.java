@@ -29,4 +29,8 @@ private VehicleRepository repository;
 	public Vehicle getVehicleById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
+	public Vehicle updateVehicle(Integer id,Vehicle vehicle) {
+		return repository.save(vehicle);
+	}
 }
