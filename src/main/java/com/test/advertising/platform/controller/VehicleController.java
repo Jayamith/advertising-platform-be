@@ -85,14 +85,28 @@ public class VehicleController {
 
 	}
 	
-	@PutMapping("/vehicles/{id}")
-	public ResponseEntity<Vehicle> updateVehicle(@PathVariable Integer id,
-			@RequestBody Vehicle vehicle) {
+//	@PutMapping("/vehicles/{id}")
+//	public ResponseEntity<Vehicle> updateVehicle(@PathVariable Integer id,
+//			@RequestBody Vehicle vehicle) {
+//
+//		Vehicle updatedVehicle = vehicleService.updateVehicle(id,vehicle);
+//		return new ResponseEntity<Vehicle>(updatedVehicle, HttpStatus.OK);
+//	}
 
-		Vehicle updatedVehicle = vehicleService.updateVehicle(id,vehicle);
-		return new ResponseEntity<Vehicle>(updatedVehicle, HttpStatus.OK);
+	@PutMapping(value = { "/vehicles/{id}" }, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+	public Vehicle updateVehicle(@PathVariable Integer id,@RequestPart("vehicle") Vehicle vehicle, @RequestPart("imageFile") MultipartFile[] file) {
+
+		try {
+			Set<ImageModel> images = uploadImage(file);
+			vehicle.setVehicleImages(images);
+			return vehicleService.updateVehicle(id,vehicle);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+
 	}
-
 	
 //	@Autowired
 //	private VehicleRepository vehicleDAO;
