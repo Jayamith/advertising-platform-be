@@ -194,6 +194,5 @@ public class SparePart {
 	public void setVehicleImages(Set<ImageModel> vehicleImages) {
 		this.vehicleImages = vehicleImages;
 	}
-	
-	
+
 }
