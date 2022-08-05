@@ -44,7 +44,6 @@ public class Vehicle {
 
 	public Vehicle() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Vehicle(Integer vehicleId, String vname, String moreInfo, String email, String contact, String location,
