@@ -37,4 +37,12 @@ private VehicleRepository repository;
 	public List<Vehicle> findBySeller(String seller){
 		return repository.findAllBySeller(seller);
 	}
+
+	public Vehicle updateStatus(Integer id, String vStatus) {
+		Vehicle vehicle = getVehicleById(id);
+		System.out.println(vStatus);
+		vehicle.setvStatus(vStatus);
+		repository.save(vehicle);
+		return vehicle;
+	}
 }

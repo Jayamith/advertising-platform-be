@@ -85,13 +85,13 @@ public class VehicleController {
 
 	}
 	
-//	@PutMapping("/vehicles/{id}")
-//	public ResponseEntity<Vehicle> updateVehicle(@PathVariable Integer id,
-//			@RequestBody Vehicle vehicle) {
-//
-//		Vehicle updatedVehicle = vehicleService.updateVehicle(id,vehicle);
-//		return new ResponseEntity<Vehicle>(updatedVehicle, HttpStatus.OK);
-//	}
+	@PutMapping("/vehicle/status/{id}")
+	public Vehicle updateStatus(@PathVariable Integer id,
+			@RequestParam("vStatus") String vStatus) {
+
+		Vehicle updatedVehicle = vehicleService.updateStatus(id,vStatus);
+		return updatedVehicle;
+	}
 
 	@PutMapping(value = { "/vehicles/{id}" }, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
 	public Vehicle updateVehicle(@PathVariable Integer id,@RequestPart("vehicle") Vehicle vehicle, @RequestPart("imageFile") MultipartFile[] file) {

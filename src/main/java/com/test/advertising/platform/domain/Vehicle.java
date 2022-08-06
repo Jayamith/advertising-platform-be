@@ -33,22 +33,23 @@ public class Vehicle {
 	private String vCondition;
 	private String seller;
 	private String manufacturer;
-	private boolean vStatus;
+	private String vStatus;
 	private Date addedDate;
+	private String[] photos;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "vehicle_images", 
-	joinColumns = { @JoinColumn(name = "vehicle_id") }, 
-	inverseJoinColumns = { @JoinColumn(name = "images_id") })
+	@JoinTable(name = "vehicle_images", joinColumns = { @JoinColumn(name = "vehicle_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "images_id") })
 	private Set<ImageModel> vehicleImages;
 
 	public Vehicle() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Vehicle(Integer vehicleId, String vname, String moreInfo, String email, String contact, String location,
 			String price, String model, String transmission, String fuelType, String vCondition, String seller,
-			String manufacturer, boolean vStatus, Date addedDate, Set<ImageModel> vehicleImages) {
+			String manufacturer, String vStatus, Date addedDate, String[] photos, Set<ImageModel> vehicleImages) {
 		super();
 		this.vehicleId = vehicleId;
 		this.vname = vname;
@@ -65,6 +66,7 @@ public class Vehicle {
 		this.manufacturer = manufacturer;
 		this.vStatus = vStatus;
 		this.addedDate = addedDate;
+		this.photos = photos;
 		this.vehicleImages = vehicleImages;
 	}
 
@@ -75,7 +77,6 @@ public class Vehicle {
 	public void setVehicleId(Integer vehicleId) {
 		this.vehicleId = vehicleId;
 	}
-
 
 	public String getVname() {
 		return vname;
@@ -165,19 +166,19 @@ public class Vehicle {
 		this.seller = seller;
 	}
 
-	public String getmanufacturer() {
+	public String getManufacturer() {
 		return manufacturer;
 	}
 
-	public void setmanufacturer(String manufacturer) {
+	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
 
-	public boolean isvStatus() {
+	public String getvStatus() {
 		return vStatus;
 	}
 
-	public void setvStatus(boolean vStatus) {
+	public void setvStatus(String vStatus) {
 		this.vStatus = vStatus;
 	}
 
@@ -187,6 +188,14 @@ public class Vehicle {
 
 	public void setAddedDate(Date addedDate) {
 		this.addedDate = addedDate;
+	}
+
+	public String[] getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(String[] photos) {
+		this.photos = photos;
 	}
 
 	public Set<ImageModel> getVehicleImages() {
